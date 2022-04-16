@@ -44,6 +44,9 @@
       "@commitlint/config-conventional"
     ]
   },
+  "prettier": {
+    "printWidth": 100
+  },
   "browserslist": {
     "production": [
       ">0.2%",
