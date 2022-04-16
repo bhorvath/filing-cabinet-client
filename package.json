@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "husky": "^7.0.4",
+    "lint-staged": "^12.3.8",
     "prettier": "^2.6.2"
   },
   "eslintConfig": {
@@ -31,6 +32,10 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "lint-staged": {
+    "*": "prettier --check",
+    "src/**/*": "yarn eslint"
   },
   "browserslist": {
     "production": [
