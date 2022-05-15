@@ -4,6 +4,8 @@ import SideDrawer from "./SideDrawer";
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 
 function App(props: any) {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -22,7 +24,11 @@ function App(props: any) {
       <MainAppBar onHamburgerClick={handleDrawerOpen} />
       <Toolbar />
       <SideDrawer open={drawerOpen} onCloseClick={handleDrawerClose} />
-      <ListPossessions />
+      <Box display="flex" justifyContent="center" alignItems="center" sx={{ m: 2 }}>
+        <Paper>
+          <ListPossessions />
+        </Paper>
+      </Box>
     </div>
   );
 }
