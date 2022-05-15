@@ -13,7 +13,7 @@ type MainAppBarProps = {
 function MainAppBar(props: MainAppBarProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
+      <AppBar sx={{ zIndex: 9000 }}>
         <Toolbar>
           <IconButton
             size="large"

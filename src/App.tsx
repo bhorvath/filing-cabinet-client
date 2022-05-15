@@ -5,32 +5,51 @@ import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
-function App(props: any) {
+const drawerWidth = 240;
+
+function App() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setDrawerOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setDrawerOpen(false);
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
   };
 
   return (
     <div className="App">
       <CssBaseline />
-      <MainAppBar onHamburgerClick={handleDrawerOpen} />
+      <MainAppBar onHamburgerClick={toggleDrawer} />
       <Toolbar />
-      <SideDrawer open={drawerOpen} onCloseClick={handleDrawerClose} />
-      <Box display="flex" justifyContent="center" alignItems="center" sx={{ m: 2 }}>
+      <SideDrawer open={drawerOpen} width={drawerWidth} />
+      <MainView open={drawerOpen}>
         <Paper>
           <ListPossessions />
         </Paper>
-      </Box>
+      </MainView>
     </div>
   );
 }
 
 export default App;
+
+const MainView = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
+  open?: boolean;
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: 10,
+  transition: theme.transitions.create("margin", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
