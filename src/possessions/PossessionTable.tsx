@@ -43,12 +43,12 @@ const PossessionTable = (props: { possessions: Possession[] }): JSX.Element => {
               <TableCell>{currencyFormatter.format(possession.price)}</TableCell>
               <TableCell style={{ width: 50 }}>
                 <IconButton>
-                  <EditIcon></EditIcon>
+                  <EditIcon />
                 </IconButton>
               </TableCell>
               <TableCell style={{ width: 50 }}>
                 <IconButton>
-                  <DeleteIcon></DeleteIcon>
+                  <DeleteIcon />
                 </IconButton>
               </TableCell>
             </TableRow>
