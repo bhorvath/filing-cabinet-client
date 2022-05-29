@@ -42,3 +42,7 @@ const prepareRawPossession = (possession: Possession): RawPossession => {
     purchaseDate: possession.purchaseDate.toMillis(),
   };
 };
+
+export const deletePossession = (id: string): Promise<void> => {
+  return axios.delete(`${POSSESSIONS_ENDPOINT}/${id}`);
+};

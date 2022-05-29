@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import { Possession } from "./possessions";
 import EditPossessionDialog from "./EditPossessionDialog";
 import { useState } from "react";
-import { updatePossession } from "./api";
+import { deletePossession, updatePossession } from "./api";
 
 type PossessionTableProps = {
   possessions: Possession[];
@@ -23,6 +23,11 @@ const PossessionTable = (props: PossessionTableProps): JSX.Element => {
 
   const handleEditPossession = (possession: Possession) => {
     setEditPossession(possession);
+  };
+
+  const handleDeletePossession = async (id: string) => {
+    await deletePossession(id);
+    onEdit();
   };
 
   const handleSaveClick = async (possession: Possession | null) => {
@@ -66,7 +71,7 @@ const PossessionTable = (props: PossessionTableProps): JSX.Element => {
                   </IconButton>
                 </TableCell>
                 <TableCell style={{ width: 50 }}>
-                  <IconButton>
+                  <IconButton onClick={() => handleDeletePossession(possession.id)}>
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
