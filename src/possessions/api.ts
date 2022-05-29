@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { DateTime } from "luxon";
-import { Possession, RawPossession } from "./possessions";
+import { NewPossession, Possession, RawNewPossession, RawPossession } from "./possessions";
 
 const POSSESSIONS_ENDPOINT = "http://localhost:3000/api/v1/possessions";
 
@@ -19,6 +19,17 @@ const extractPossessionData = (response: AxiosResponse<GetPossessionsResponse>):
   }));
 
   return possessions;
+};
+
+export const createPossession = (possession: NewPossession): Promise<void> => {
+  return axios.post(POSSESSIONS_ENDPOINT, prepareRawNewPossession(possession));
+};
+
+const prepareRawNewPossession = (possession: NewPossession): RawNewPossession => {
+  return {
+    ...possession,
+    purchaseDate: possession.purchaseDate?.toMillis(),
+  };
 };
 
 export const updatePossession = (possession: Possession): Promise<void> => {

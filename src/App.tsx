@@ -4,7 +4,6 @@ import SideDrawer from "./SideDrawer";
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -26,9 +25,7 @@ function App() {
         <Toolbar />
         <SideDrawer open={drawerOpen} width={drawerWidth} />
         <MainView open={drawerOpen}>
-          <Paper>
-            <ListPossessions />
-          </Paper>
+          <ListPossessions />
         </MainView>
       </LocalizationProvider>
     </div>

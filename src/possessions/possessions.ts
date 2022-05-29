@@ -9,6 +9,8 @@ export type RawPossession = {
   store: string;
 };
 
+export type RawNewPossession = Partial<Omit<RawPossession, "id">>;
+
 export type Possession = {
   id: string;
   name: string;
@@ -17,3 +19,5 @@ export type Possession = {
   price: number;
   store: string;
 };
+
+export type NewPossession = Partial<Omit<Possession, "id">>;

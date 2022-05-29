@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Possession } from "./possessions";
 import PossessionTable from "./PossessionTable";
 import { getPossessions } from "./api";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import NewPossessionButton from "./NewPossessionButton";
 
 function ListPossessions(): JSX.Element {
   const [possessions, setPossessions] = useState<Possession[]>([]);
@@ -11,12 +14,13 @@ function ListPossessions(): JSX.Element {
     refreshPossessions();
   }, []);
 
-  if (!possessions || possessions.length === 0) return <p>No possessions</p>;
-
   return (
-    <div className="PossessionsList">
+    <Paper>
+      <Box textAlign={"right"}>
+        <NewPossessionButton onSave={refreshPossessions} />
+      </Box>
       <PossessionTable possessions={possessions} onEdit={refreshPossessions} />
-    </div>
+    </Paper>
   );
 }
 

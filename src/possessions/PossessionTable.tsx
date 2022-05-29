@@ -1,12 +1,4 @@
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
@@ -19,6 +11,7 @@ type PossessionTableProps = {
   possessions: Possession[];
   onEdit: () => void;
 };
+
 const PossessionTable = (props: PossessionTableProps): JSX.Element => {
   const { possessions, onEdit } = props;
   const [editPossession, setEditPossession] = useState<Possession | null>(null);
@@ -46,7 +39,7 @@ const PossessionTable = (props: PossessionTableProps): JSX.Element => {
 
   return (
     <div className="PossessionsTable">
-      <TableContainer component={Paper}>
+      <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
